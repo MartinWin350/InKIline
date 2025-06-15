@@ -2,6 +2,60 @@ import streamlit as st
 
 st.set_page_config(page_title="InKIline - Digitale Organisationsberatung", layout="wide")
 
+# ---- DARK MODE CSS ----
+st.markdown("""
+<style>
+body, .stApp, .block-container, .main, [data-testid="stAppViewContainer"] {
+    background: #14181f !important;
+    color: #f7fafc !important;
+}
+.st-emotion-cache-1d391kg, .st-emotion-cache-zt5igj, .block-container {
+    background: #14181f !important;
+    color: #f7fafc !important;
+}
+.sidebar-content, .st-emotion-cache-1wmy9hl, [data-testid="stSidebar"] {
+    background: #181c23 !important;
+    color: #fff !important;
+}
+.st-emotion-cache-1v0mbdj {background: #14181f !important;}
+/* Header-Überschriften weiß */
+h1, h2, h3, h4, h5, h6 {
+    color: #fff !important;
+}
+a, .css-1v0mbdj, .css-1wmy9hl, .st-emotion-cache-1v0mbdj {
+    color: #77bbff !important;
+}
+.highlight-box {
+    background-color: #1c2231 !important;
+    color: #eaf6ff !important;
+    border-left: 5px solid #39a7ff !important;
+}
+.benefit-list li::marker {
+    color: #39a7ff !important;
+}
+.logo-in-sidebar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.2em;
+    margin-top: 0.5em;
+    max-width: 160px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 7px;
+    box-shadow: 0 2px 16px #0a0a0a88;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# ---- SIDEBAR MIT LOGO ----
+with st.sidebar:
+    st.image("logo.png", use_container_width=True)
+
+    st.markdown("<div style='height:0.6em'></div>", unsafe_allow_html=True)  # Abstand
+
+    st.title("Navigation")
+
 # Seiteninhalte (reduzierte Navigation)
 seiten = {
     "Startseite": "start",
@@ -11,8 +65,6 @@ seiten = {
     "Kontakt": "kontakt"
 }
 
-# Sidebar Navigation
-st.sidebar.title("Navigation")
 page = st.sidebar.radio("Gehe zu", list(seiten.keys()))
 
 # Kontaktbutton (Dummy)
@@ -23,20 +75,17 @@ if page != "Kontakt":
 if seiten[page] == "start":
     st.markdown("""
     <style>
-        h1 {
-            color: #004D7A;
-            font-size: 3em;
-            margin-bottom: 0.2em;
-        }
+        h1 { color: #fff !important; }
         .highlight-box {
-            background-color: #f0f9ff;
+            background-color: #1c2231 !important;
             padding: 1.2em;
-            border-left: 5px solid #007ACC;
+            border-left: 5px solid #39a7ff !important;
             border-radius: 0.5em;
             margin-bottom: 1em;
+            color: #eaf6ff !important;
         }
         .benefit-list li::marker {
-            color: #007ACC;
+            color: #39a7ff !important;
         }
     </style>
     """, unsafe_allow_html=True)
@@ -348,3 +397,4 @@ elif seiten[page] == "kontakt":
 
     Wir freuen uns auf den Austausch!
     """)
+
